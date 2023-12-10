@@ -8,9 +8,8 @@
   import { useMenuStore } from '../../../store/modules/menu';
   const menuStore = useMenuStore();
 
-  const filterByMetaGroups = (menu: any) => {
+  const filterByMetaGroups = () => {
     menuStore.filterMenu((menu) => {
-      console.log(menu, menu.meta?.groups, menu.meta?.groups?.includes('test') ?? false);
       return menu.meta?.groups?.includes('test') ?? false;
     });
   };

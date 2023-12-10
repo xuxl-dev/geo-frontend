@@ -18,8 +18,11 @@
         :sider="false"
       />
       <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
-      <div>
-        <button>Buttons</button> 
+      <div class="bg-red-500 m-4 p-2">
+        <button>俺是菜单！</button> 
+        <button>Modify Us!</button> 
+        <button>俺是菜单！</button> 
+        <button>Modify Us!</button> 
       </div>
 
     </div>

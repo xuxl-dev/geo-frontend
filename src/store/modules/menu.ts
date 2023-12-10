@@ -10,7 +10,7 @@ export const useMenuStore = defineStore('menu-manipulation', () => {
     menusRef,
     (menus) => {
       filteredMenusRef.value = menus;
-      console.log('filteredMenusRef.value', filteredMenusRef.value);
+      // console.log('filteredMenusRef.value', filteredMenusRef.value);
     },
     { immediate: true },
   );
