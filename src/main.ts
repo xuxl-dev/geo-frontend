@@ -17,15 +17,18 @@ import { setupRouterGuard } from '@/router/guard';
 import { setupStore } from '@/store';
 import { FastCrud } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
-import ui from '@fast-crud/ui-naive';
+// import ui from '@fast-crud/ui-naive';
 import Fc from './views/dashboard/test/fcrud/components/fc.vue';
-
+import Antdv from 'ant-design-vue';
+// import 'ant-design-vue/dist/antd.less';
 import App from './App.vue';
 import Naive from 'naive-ui';
 import { withInstall } from './utils';
+import ui from '@fast-crud/ui-antdv';
+
 async function bootstrap() {
   const app = createApp(App);
-
+  app.use(Antdv);
   // Configure store
   // 配置 store
   setupStore(app);
@@ -65,8 +68,8 @@ async function bootstrap() {
 
   // Register global components
   // 注册全局组件
-  registerGlobComp(app);
-  app.use(withInstall(Fc))
+  // registerGlobComp(app);
+  app.use(withInstall(Fc));
   // Multilingual configuration
   // 多语言配置
   // Asynchronous case: language files may be obtained from the server side
