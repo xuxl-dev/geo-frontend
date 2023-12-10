@@ -55,7 +55,7 @@
 
       const { prefixCls } = useDesign('layout-menu');
 
-      const { menusRef } = useSplitMenu(toRef(props, 'splitType'));
+      const { menuStore } = useSplitMenu(toRef(props, 'splitType'));
 
       const { getIsMobile } = useAppInject();
 
@@ -93,7 +93,7 @@
       });
 
       const getCommonProps = computed(() => {
-        const menus = unref(menusRef);
+        const menus = menuStore.menusRef;
         return {
           menus,
           beforeClickFn: beforeMenuClickFn,

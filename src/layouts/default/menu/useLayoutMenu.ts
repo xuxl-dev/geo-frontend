@@ -107,5 +107,5 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
     }
   }
 
-  return { menusRef: menuStore.menusRef };
+  return { menuStore };
 }

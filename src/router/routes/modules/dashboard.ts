@@ -15,6 +15,14 @@ const dashboard: AppRouteModule = {
   },
   children: [
     {
+      path: 'test_menu',
+      name: 'Test_menu',
+      component: () => import('/@/views/dashboard/test/menuManipulate.vue'),
+      meta: {
+        title: "TestMenu",
+      },
+    },
+    {
       path: 'test',
       name: 'Test',
       component: () => import('/@/views/dashboard/test/tracker.vue'),
