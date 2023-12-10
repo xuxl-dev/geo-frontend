@@ -12,8 +12,17 @@ const dashboard: AppRouteModule = {
     orderNo: 10,
     icon: 'ion:grid-outline',
     title: t('routes.dashboard.dashboard'),
+    groups: ['test'],
   },
   children: [
+    {
+      path: 'test_menu',
+      name: 'Test_menu',
+      component: () => import('/@/views/dashboard/test/menuManipulate.vue'),
+      meta: {
+        title: "TestMenu",
+      },
+    },
     {
       path: 'test',
       name: 'Test',

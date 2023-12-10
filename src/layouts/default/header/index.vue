@@ -9,6 +9,7 @@
         :theme="getHeaderTheme"
         :style="getLogoWidth"
       />
+
       <LayoutTrigger
         v-if="
           (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
@@ -17,6 +18,13 @@
         :sider="false"
       />
       <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
+      <div class="bg-red-500 m-4 p-2">
+        <button>俺是菜单！</button> 
+        <button>Modify Us!</button> 
+        <button>俺是菜单！</button> 
+        <button>Modify Us!</button> 
+      </div>
+
     </div>
     <!-- left end -->
 
