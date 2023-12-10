@@ -13,7 +13,6 @@ import { useMenuStore } from '/@/store/modules/menu';
 export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
   // Menu array
   const menuStore = useMenuStore();
-  // const menusRef = menuStore.menusRef;
   const { currentRoute } = useRouter();
   const { getIsMobile } = useAppInject();
   const permissionStore = usePermissionStore();
@@ -82,12 +81,12 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
 
     if (!children || !children.length) {
       setMenuSetting({ hidden: true });
-      menuStore.menusRef = [];
+      menuStore.filteredMenusRef = [];
       return;
     }
 
     setMenuSetting({ hidden: false });
-    menuStore.menusRef = children;
+    menuStore.filteredMenusRef = children;
   }
 
   // get menus

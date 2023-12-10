@@ -93,7 +93,7 @@
       });
 
       const getCommonProps = computed(() => {
-        const menus = menuStore.menusRef;
+        const menus = menuStore.filteredMenusRef;
         return {
           menus,
           beforeClickFn: beforeMenuClickFn,

@@ -1,26 +1,23 @@
 import { defineStore } from 'pinia';
-import { Ref, computed, ref } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { Menu } from '/@/router/types';
 
 export const useMenuStore = defineStore('menu-manipulation', () => {
-  let menusRef : Ref<Menu[]> = ref([])
-  return { menusRef };
+  let menusRef = ref<Menu[]>([]);
+  const filteredMenusRef = ref<Menu[]>([]);
+
+  watch(
+    menusRef,
+    (menus) => {
+      filteredMenusRef.value = menus;
+      console.log('filteredMenusRef.value', filteredMenusRef.value);
+    },
+    { immediate: true },
+  );
+
+  const filterMenu = (filter: (menu: Menu) => boolean) => {
+    filteredMenusRef.value = menusRef.value.filter(filter);
+  };
+
+  return { menusRef, filterMenu, filteredMenusRef };
 });
-// const menusRef: Ref<{
-//   name: string;
-//   icon?: string | undefined;
-//   img?: string | undefined;
-//   path: string;
-//   paramPath?: string | undefined;
-//   disabled?: boolean | undefined;
-//   children?: ...[] | undefined;
-//   orderNo?: number | undefined;
-//   roles?: RoleEnum[] | undefined;
-//   meta?: {
-//       ...;
-//   } | undefined;
-//   tag?: {
-//       ...;
-//   } | undefined;
-//   hideMenu?: boolean | undefined;
-// }[]>
