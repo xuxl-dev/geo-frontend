@@ -8,10 +8,12 @@ import { useMenuSetting } from '/@/hooks/setting/useMenuSetting';
 import { getChildrenMenus, getCurrentParentPath, getMenus, getShallowMenus } from '/@/router/menus';
 import { usePermissionStore } from '/@/store/modules/permission';
 import { useAppInject } from '/@/hooks/web/useAppInject';
+import { useMenuStore } from '/@/store/modules/menu';
 
 export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
   // Menu array
-  const menusRef = ref<Menu[]>([]);
+  const menuStore = useMenuStore();
+  // const menusRef = menuStore.menusRef;
   const { currentRoute } = useRouter();
   const { getIsMobile } = useAppInject();
   const permissionStore = usePermissionStore();
@@ -80,19 +82,19 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
 
     if (!children || !children.length) {
       setMenuSetting({ hidden: true });
-      menusRef.value = [];
+      menuStore.menusRef = [];
       return;
     }
 
     setMenuSetting({ hidden: false });
-    menusRef.value = children;
+    menuStore.menusRef = children;
   }
 
   // get menus
   async function genMenus() {
     // normal mode
     if (unref(normalType) || unref(getIsMobile)) {
-      menusRef.value = await getMenus();
+      menuStore.menusRef = await getMenus();
       return;
     }
 
@@ -100,10 +102,10 @@ export function useSplitMenu(splitType: Ref<MenuSplitTyeEnum>) {
     if (unref(getSpiltTop)) {
       const shallowMenus = await getShallowMenus();
 
-      menusRef.value = shallowMenus;
+      menuStore.menusRef = shallowMenus;
       return;
     }
   }
 
-  return { menusRef };
+  return { menusRef: menuStore.menusRef };
 }

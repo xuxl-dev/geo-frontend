@@ -9,6 +9,7 @@
         :theme="getHeaderTheme"
         :style="getLogoWidth"
       />
+
       <LayoutTrigger
         v-if="
           (getShowContent && getShowHeaderTrigger && !getSplit && !getIsMixSidebar) || getIsMobile
@@ -17,6 +18,10 @@
         :sider="false"
       />
       <LayoutBreadcrumb v-if="getShowContent && getShowBread" :theme="getHeaderTheme" />
+      <div>
+        <button>Buttons</button> 
+      </div>
+
     </div>
     <!-- left end -->
 
