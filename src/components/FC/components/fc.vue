@@ -35,8 +35,8 @@
         crud: { [key: string]: string };
         dict: { [key: string]: any };
       };
-      console.log(`crud: ${JSON.stringify(crud)}`);
-      console.log(`dict: ${JSON.stringify(dict)}`);
+      // console.log(`crud: ${JSON.stringify(crud)}`);
+      // console.log(`dict: ${JSON.stringify(dict)}`);
       const nameMap = {
         create: 'addRequest',
         read: 'pageRequest',
