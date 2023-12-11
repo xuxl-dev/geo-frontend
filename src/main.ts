@@ -61,6 +61,7 @@ async function bootstrap() {
         //你可以在此处配置你的其他crudOptions公共配置
       };
     },
+    logger: { off: { tableColumns: false } },
   });
   // Initialize internal system configuration
   // 初始化内部系统配置
