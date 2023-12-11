@@ -1,5 +1,4 @@
 <template>
-  <div></div>
   <div>
     <Fc bind="/userlist/docs" />
   </div>
