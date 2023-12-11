@@ -1,7 +1,7 @@
 <template>
   <div></div>
   <div>
-    <Fc bind="/crud-user/docs" />
+    <Fc bind="/userlist/docs" />
   </div>
 </template>
 
