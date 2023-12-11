@@ -1,15 +1,17 @@
 <template>
   <ConfigProvider :locale="getAntdLocale" :theme="themeConfig">
     <AppProvider>
-      <n-dialog-provider>
-        <n-notification-provider>
-          <n-message-provider>
-            <fs-ui-context>
-              <RouterView />
-            </fs-ui-context>
-          </n-message-provider>
-        </n-notification-provider>
-      </n-dialog-provider>
+      <!-- <n-dialog-provider> -->
+      <!-- <n-notification-provider> -->
+      <!-- <n-message-provider> -->
+      <!-- <fs-ui-context> -->
+        <!-- <n-config-provider :theme-overrides="themeOverrides"> -->
+        <RouterView />
+        <!-- </n-config-provider> -->
+      <!-- </fs-ui-context> -->
+      <!-- </n-message-provider> -->
+      <!-- </n-notification-provider> -->
+      <!-- </n-dialog-provider> -->
     </AppProvider>
   </ConfigProvider>
 </template>
@@ -22,7 +24,13 @@
   import { useDarkModeTheme } from '@/hooks/setting/useDarkModeTheme';
   import 'dayjs/locale/zh-cn';
   import { computed } from 'vue';
+  // import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui';
 
+  // const themeOverrides: GlobalThemeOverrides = {
+  //   common: {
+  //     primaryColor: '#FF8C00',
+  //   },
+  // };
   // support Multi-language
   const { getAntdLocale } = useLocale();
 
