@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts" setup>
-  import { FsPage, FsCrud } from '@fast-crud/fast-crud';
+  import { FsPage, FsCrud, type CrudOptions } from '@fast-crud/fast-crud';
   import { ref, onMounted } from 'vue';
   import { useFs } from '@fast-crud/fast-crud';
-  import _ from 'lodash-es';
+  import { merge } from 'lodash-es';
   import { defHttp } from '/@/utils/http/axios';
   import { replaceDictValues } from '../dictHelper';
 
@@ -20,6 +20,14 @@
       type: String,
       required: true,
     },
+    /**
+     * Override crudOptions
+     */
+    config: {
+      type: Object as PropType<Partial<CrudOptions>>,
+      default: {},
+      required: false,
+    },
   });
 
   //此处为crudOptions配置
@@ -27,6 +35,14 @@
   const crudBinding = ref();
   const crudRef = ref();
   const context: any = {}; //变量上下文，传给createCrudOptions的额外参数（可以任意命名，任意多个）
+
+  const nameMap = {
+    create: 'addRequest',
+    read: 'pageRequest',
+    update: 'editRequest',
+    delete: 'delRequest',
+  };
+
   onMounted(async () => {
     console.log(`bind: ${props.bind}`);
 
@@ -35,26 +51,21 @@
         crud: { [key: string]: string };
         dict: { [key: string]: any };
       };
-      // console.log(`crud: ${JSON.stringify(crud)}`);
-      // console.log(`dict: ${JSON.stringify(dict)}`);
-      const nameMap = {
-        create: 'addRequest',
-        read: 'pageRequest',
-        update: 'editRequest',
-        delete: 'delRequest',
-      };
 
       const request = Object.fromEntries(
         Object.entries(crud).map(([key, value]) => {
           return [nameMap[key], (params: any) => defHttp.post({ url: value, params })];
         }),
       );
-      return {
+      const remoteOptions = {
         crudOptions: {
           request,
           columns: replaceDictValues(dict),
         },
       };
+
+      //TODO check this
+      return merge(remoteOptions, props.config);
     };
 
     const { crudExpose } = await useFs({
