@@ -7,7 +7,7 @@ const infomanage: AppRouteModule = {
     path: '/organization',
     name: '组织结构',
     component: LAYOUT,
-    redirect: '/infomanage/organization/rolemanage',
+    redirect: '/infoManage/organization/rolemanage',
     meta: {
         orderNo: 5,
         icon: 'ion:grid-outline',
@@ -17,7 +17,7 @@ const infomanage: AppRouteModule = {
         {
             path: 'rolemanage',
             name: '角色管理',
-            component: () => import('/@/views/infomanage/organiztion/rolemanage/index.vue'),
+            component: () => import('/@/views/infoManage/organization/rolemanage/index.vue'),
             meta: {
                 title: "角色管理",
             },
@@ -25,7 +25,7 @@ const infomanage: AppRouteModule = {
         {
             path: 'userlist',
             name: '用户列表',
-            component: () => import('/@/views/infomanage/organiztion/userlist/index.vue'),
+            component: () => import('/@/views/infoManage/organization/userlist/index.vue'),
             meta: {
                 title: "用户列表",
             },
@@ -33,7 +33,7 @@ const infomanage: AppRouteModule = {
         {
             path: 'department',
             name: '部门管理',
-            component: () => import('/@/views/infomanage/organiztion/department/index.vue'),
+            component: () => import('/@/views/infoManage/organization/department/index.vue'),
             meta: {
                 // affix: true,
                 title: "部门管理",

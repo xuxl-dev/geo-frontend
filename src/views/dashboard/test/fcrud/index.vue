@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Fc bind="/userlist/docs" />
+  <div class="relative w-full h-full">
+    <Fc bind="/crud-user/docs" />
   </div>
 </template>
 
