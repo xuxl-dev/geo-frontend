@@ -17,10 +17,8 @@ import { setupRouterGuard } from '@/router/guard';
 import { setupStore } from '@/store';
 import { FastCrud } from '@fast-crud/fast-crud';
 import '@fast-crud/fast-crud/dist/style.css';
-// import ui from '@fast-crud/ui-naive';
 import Fc from './views/dashboard/test/fcrud/components/fc.vue';
 import Antdv from 'ant-design-vue';
-// import 'ant-design-vue/dist/antd.less';
 import App from './App.vue';
 import Naive from 'naive-ui';
 import { withInstall } from './utils';
@@ -61,6 +59,7 @@ async function bootstrap() {
         //你可以在此处配置你的其他crudOptions公共配置
       };
     },
+    logger: { off: { tableColumns: false } },
   });
   // Initialize internal system configuration
   // 初始化内部系统配置

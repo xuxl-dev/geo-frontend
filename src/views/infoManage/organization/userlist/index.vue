@@ -5,5 +5,5 @@
 </template>
 
 <script lang="ts" setup>
-  import Fc from './components/fc.vue';
+  import Fc from '@/components/FC';
 </script>
